@@ -28,8 +28,8 @@ class Main extends PluginBase implements Listener{
                     $sender->getInventory->setChestplate(Item::get(299));
                     $sender->getInventory->setLeggings(Item::get(316));
                     $sender->getInventory->setBoots(Item::get(301));
-                    $sender->getInventory->sendArmorContents($sender
-// unfinished line above, have to go somewhere
+                    $sender->getInventory->sendArmorContents($sender);
+                    $sender->addItem(251);
                  }
                  else
                  {
