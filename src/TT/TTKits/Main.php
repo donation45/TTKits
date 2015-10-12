@@ -9,6 +9,8 @@ use pocketmine\utils\TextFormat;
 use pocketmine\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\entity\Effect;
+use pocketmine\item\Item;
 
 class Main extends PluginBase implements Listener{
 
@@ -22,20 +24,37 @@ class Main extends PluginBase implements Listener{
      public function onCommand(CommandSender $sender, Command $cmd, $label,array $args){
         switch(strtolower($cmd->getName())){
         case "kit":
-                 if($sender instanceof Player and $args[1] == "assassin"){
-                    $sender->sendMessage(TextFormat::GREEN . "You have chosen the Assassin kit.");
-                    $sender->getInventory->setHelmet(Item::get(298));
-                    $sender->getInventory->setChestplate(Item::get(299));
-                    $sender->getInventory->setLeggings(Item::get(316));
-                    $sender->getInventory->setBoots(Item::get(301));
-                    $sender->getInventory->sendArmorContents($sender);
-                    $sender->addItem(251);
+                 if(isset($args[0]) && $sender instanceof Player) {
+                    $kit = strtolower($args[0]);
+                    switch($kit) {
+                    case "assassin":
+                        $sender->sendMessage(TextFormat::GREEN . "You have chosen the Assassin kit.");
+                        $sender->getInventory()->clearAll();
+                        $sender->getInventory()->setHelmet(Item::get(298));
+                        $sender->getInventory()->setChestplate(Item::get(299));
+                        $sender->getInventory()->setLeggings(Item::get(316));
+                        $sender->getInventory()->setBoots(Item::get(301));
+                        $sender->getInventory()->sendArmorContents($sender);
+                        $sword = Item::fromString("iron_sword");
+                        $sword->setCount(1);
+                        $sender->getInventory()->addItem($sword);
+                        // Will need to set identifier soon.
+                        break;
+                    default:
+                        $sender->sendMessage($cmd->getUsage);
+                        return;
+                    }
                  }
                  else
                  {
                        $sender->sendMessage($cmd->getUsage);
+                       return;
                  }   
-        return true;
+            break;
+        case "test":
+            $sender->setMaxHealth(40);
+            $sender->sendMessage(TextFormat::RED."TEST");
+            return;
         }
     }
 }

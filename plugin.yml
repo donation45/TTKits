@@ -1,8 +1,17 @@
 name: TTKits
-main: TT/Main
+main: TT\TTKits\Main
 version: 1.0.0
 author: TT
 api: [1.0.0]
+commands:
+ kit:
+  description: Choose a kit to fight!
+  permission: kit
+ test:
+  description: Test Command!
+  permission: test
 permissions:
  kit:
+  default: op
+ test:
   default: op
