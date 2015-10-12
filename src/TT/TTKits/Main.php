@@ -24,6 +24,12 @@ class Main extends PluginBase implements Listener{
         case "kit":
                  if($sender instanceof Player and $args[1] == "assassin"){
                     $sender->sendMessage(TextFormat::GREEN . "You have chosen the Assassin kit.");
+                    $sender->getInventory->setHelmet(Item::get(298));
+                    $sender->getInventory->setChestplate(Item::get(299));
+                    $sender->getInventory->setLeggings(Item::get(316));
+                    $sender->getInventory->setBoots(Item::get(301));
+                    $sender->getInventory->sendArmorContents($sender
+// unfinished line above, have to go somewhere
                  }
                  else
                  {
