@@ -10,6 +10,7 @@ use pocketmine\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\entity\Effect;
+use pocketmine\item\Item;
 
 class Main extends PluginBase implements Listener{
 
@@ -26,12 +27,14 @@ class Main extends PluginBase implements Listener{
                  $kit = strtolower($args[0]);
                  if($sender instanceof Player and $kit == "assassin"){
                     $sender->sendMessage(TextFormat::GREEN . "You have chosen the Assassin kit.");
-                    $sender->getInventory->setHelmet(Item::get(298));
-                    $sender->getInventory->setChestplate(Item::get(299));
-                    $sender->getInventory->setLeggings(Item::get(316));
-                    $sender->getInventory->setBoots(Item::get(301));
-                    $sender->getInventory->sendArmorContents($sender);
-                    $sender->addItem(251);
+                    $sender->getInventory()->setHelmet(Item::get(298));
+                    $sender->getInventory()->setChestplate(Item::get(299));
+                    $sender->getInventory()->setLeggings(Item::get(316));
+                    $sender->getInventory()->setBoots(Item::get(301));
+                    $sender->getInventory()->sendArmorContents($sender);
+                    $sword = Item::fromString("iron_sword");
+                    $sword->setCount(1);
+                    $sender->getInventory()->addItem(clone $sword);
                     // Will need to set identifier soon.
                  }
                  else
