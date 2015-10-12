@@ -19,7 +19,7 @@ class Main extends PluginBase implements Listener{
      public function onDisable(){
         $this->getLogger()->info(TextFormat::RED . "TTKits disabled!");
      }
-    public function onCommand(CommandSender $sender, Command $cmd, $label,array $args){
+     public function onCommand(CommandSender $sender, Command $cmd, $label,array $args){
         switch(strtolower($cmd->getName())){
         case "kit":
                  if($sender instanceof Player and $args[1] == "assassin"){
