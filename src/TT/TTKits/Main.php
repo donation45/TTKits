@@ -22,7 +22,8 @@ class Main extends PluginBase implements Listener{
      public function onCommand(CommandSender $sender, Command $cmd, $label,array $args){
         switch(strtolower($cmd->getName())){
         case "kit":
-                 if($sender instanceof Player and $args[1] == "assassin"){
+                 $kit = strtolower($args[0]);
+                 if($sender instanceof Player and $kit == "assassin"){
                     $sender->sendMessage(TextFormat::GREEN . "You have chosen the Assassin kit.");
                     $sender->getInventory->setHelmet(Item::get(298));
                     $sender->getInventory->setChestplate(Item::get(299));
@@ -30,6 +31,7 @@ class Main extends PluginBase implements Listener{
                     $sender->getInventory->setBoots(Item::get(301));
                     $sender->getInventory->sendArmorContents($sender);
                     $sender->addItem(251);
+                    // Will need to set identifier soon.
                  }
                  else
                  {
