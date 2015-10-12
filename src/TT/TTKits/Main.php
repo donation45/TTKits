@@ -9,6 +9,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\entity\Effect;
 
 class Main extends PluginBase implements Listener{
 
@@ -37,7 +38,11 @@ class Main extends PluginBase implements Listener{
                  {
                        $sender->sendMessage($cmd->getUsage);
                  }   
-        return true;
+        break;
+        case "test":
+            $sender->setMaxHealth(40);
+            $sender->sendMessage(TextFormat::RED."TEST");
+            return;
         }
     }
 }
