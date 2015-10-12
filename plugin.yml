@@ -1,1 +1,8 @@
-
+name: TTKits
+main: TT/Main
+version: 1.0.0
+author: TT
+api: [1.0.0]
+permissions:
+ kit:
+  default: op
