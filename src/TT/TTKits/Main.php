@@ -28,7 +28,7 @@ class Main extends PluginBase implements Listener{
                     $kit = strtolower($args[0]);
                     switch($kit) {
                     case "assassin":
-                        $sender->sendMessage(TextFormat::GREEN . "You have chosen the Assassin kit.");
+                        $sender->sendMessage($this->colorize("&aYou have chosen the &cAssassin&a kit."));
                         $sender->getInventory()->clearAll();
                         $sender->getInventory()->setHelmet(Item::get(298));
                         $sender->getInventory()->setChestplate(Item::get(299));
@@ -41,7 +41,7 @@ class Main extends PluginBase implements Listener{
                         // Will need to set identifier soon.
                         break;
                     case "tank":
-                        $sender->sendMessage(TextFormat::GREEN . "You have chosen the Tank kit.");
+                        $sender->sendMessage($this->colorize("&aYou have chosen the &9Tank&a kit."));
                         $sender->getInventory()->clearAll();
                         $sender->getInventory()->setHelmet(Item::get(306));
                         $sender->getInventory()->setChestplate(Item::get(303));
@@ -54,7 +54,7 @@ class Main extends PluginBase implements Listener{
                         // Will need to set identifier soon.
                         break;
                     case "spectre":
-                        $sender->sendMessage(TextFormat::GREEN . "You have chosen the Spectre kit.");
+                        $sender->sendMessage($this->colorize("&aYou have chosen the &8Spectre&a kit."));
                         $sender->getInventory()->clearAll();
                         $sender->getInventory()->setBoots(Item::get(305));
                         $sender->getInventory()->sendArmorContents($sender);
@@ -67,16 +67,29 @@ class Main extends PluginBase implements Listener{
                         // Will need to set identifier soon.
                         break;
                     default:
-                        $sender->sendMessage($cmd->getUsage);
+                        $sender->sendMessage($this->colorize($cmd->getUsage));
                         return;
                     }
                  }
                  else
                  {
-                       $sender->sendMessage($cmd->getUsage);
+                       $sender->sendMessage($this->colorize($cmd->getUsage));
                        return;
                  }   
             break;
         }
+    }
+    
+    /**
+     * Will be used to color our messages.
+     * This makes it easier and allows us to make the messages beautiful!
+     * 
+     * @param string $str The string must contain '&' for this function to do anything!
+     * 
+     * @return string Returns the string with '§' instead of '&'.
+     */
+    public function colorize($str) {
+        $new_str = str_replace("&", "§", $str);
+        return $new_str;
     }
 }
