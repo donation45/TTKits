@@ -6,12 +6,8 @@ api: [1.0.0]
 commands:
  kit:
   description: Choose a kit to fight!
+  usage: /kit <kit>
   permission: kit
- test:
-  description: Test Command!
-  permission: test
 permissions:
  kit:
-  default: op
- test:
   default: op
