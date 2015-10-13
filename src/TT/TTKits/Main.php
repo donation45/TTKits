@@ -40,6 +40,32 @@ class Main extends PluginBase implements Listener{
                         $sender->getInventory()->addItem($sword);
                         // Will need to set identifier soon.
                         break;
+                    case "tank":
+                        $sender->sendMessage(TextFormat::GREEN . "You have chosen the Tank kit.");
+                        $sender->getInventory()->clearAll();
+                        $sender->getInventory()->setHelmet(Item::get(306));
+                        $sender->getInventory()->setChestplate(Item::get(303));
+                        $sender->getInventory()->setLeggings(Item::get(304));
+                        $sender->getInventory()->setBoots(Item::get(309));
+                        $sender->getInventory()->sendArmorContents($sender);
+                        $sword = Item::fromString("wooden_sword");
+                        $sword->setCount(1);
+                        $sender->getInventory()->addItem($sword);
+                        // Will need to set identifier soon.
+                        break;
+                    case "spectre":
+                        $sender->sendMessage(TextFormat::GREEN . "You have chosen the Spectre kit.");
+                        $sender->getInventory()->clearAll();
+                        $sender->getInventory()->setBoots(Item::get(305));
+                        $sender->getInventory()->sendArmorContents($sender);
+                        $axe = Item::fromString("stone_axe");
+                        $axe->setCount(1);
+                        $sender->getInventory()->addItem($axe);
+                        $sugar = Item::fromString("sugar");
+                        $sugar->setCount(1);
+                        $sender->getInventory()->addItem($sugar);
+                        // Will need to set identifier soon.
+                        break;
                     default:
                         $sender->sendMessage($cmd->getUsage);
                         return;
@@ -51,10 +77,6 @@ class Main extends PluginBase implements Listener{
                        return;
                  }   
             break;
-        case "test":
-            $sender->setMaxHealth(40);
-            $sender->sendMessage(TextFormat::RED."TEST");
-            return;
         }
     }
 }
